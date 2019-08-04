@@ -5,7 +5,11 @@
   </tr>
   <% @users.each do |user| %>
     <tr>
+      <% if !user.value_id -%>
       <td> <%= "#{user.first_name} #{user.last_name}" %> </td>
+      <% else -%>
+      <td> <%= link_to "#{user.first_name} #{user.last_name}", "/users/#{user.id}/#{@metric_id}/#{user.value_id}" %> </td>
+      <% end -%>
       <td> <%= user.value.to_i %> </td>
     </tr>
   <% end -%>
