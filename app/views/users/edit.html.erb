@@ -1,0 +1,10 @@
+<table>
+  <tr>
+    <td> User </td>
+    <td> Metric Value </td>
+  </tr>
+  <tr>
+    <td> <%= "#{@user.first_name} #{@user.last_name}" %> </td>
+    <td> <%= number_field_tag 'metric_value', @metric_value.value.to_i  %>  </td>
+  </tr>
+</table>
