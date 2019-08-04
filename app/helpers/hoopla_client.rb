@@ -23,6 +23,20 @@ class HooplaClient
     end
   end
 
+
+  def put(relative_url, options)
+    response = client.put(relative_url) do |req|
+      req.headers['Content-Type'] = 'application/vnd.hoopla.metric-value+json'
+      req.body = options.to_json
+    end
+    if response.status == 200
+      JSON.parse(response.body)
+    else
+      puts response.inspect
+      raise StandardError.new('Invalid response from PUT')
+    end
+  end
+
   def get_relative_url(link)
     descriptor['links'].find { |l| l['rel'] == link }['href'].delete_prefix descriptor['href']
   end

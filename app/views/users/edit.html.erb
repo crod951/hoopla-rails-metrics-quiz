@@ -1,10 +1,16 @@
-<table>
-  <tr>
-    <td> User </td>
-    <td> Metric Value </td>
-  </tr>
-  <tr>
-    <td> <%= "#{@user.first_name} #{@user.last_name}" %> </td>
-    <td> <%= number_field_tag 'metric_value', @metric_value.value.to_i  %>  </td>
-  </tr>
-</table>
+<%= form_tag("/users/#{@user_id}/update", method: :put) do %>
+  <table>
+    <tr>
+      <td> User </td>
+      <td> Metric Value </td>
+    </tr>
+    <tr>
+      <%= hidden_field_tag 'user_id', @user_id %>
+      <%= hidden_field_tag 'metric_id', @metric_id %>
+      <%= hidden_field_tag 'value_id', @value_id %>
+      <td> <%= "#{@user.first_name} #{@user.last_name}" %> </td>
+      <td> <%= number_field_tag 'metric_value', @metric_value.value.to_i  %>  </td>
+      <td> <%= submit_tag 'Update' %>  </td>
+    </tr>
+  </table>
+<% end -%>
