@@ -1,0 +1,10 @@
+<table>
+  <tr>
+      <td> Metric Name </td>
+  </tr>
+    <% @metrics.each do |metric| %>
+    <tr>
+      <td> <%= metric.name %> </td>
+    </tr>
+    <% end -%>
+</table>
