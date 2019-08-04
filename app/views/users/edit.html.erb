@@ -1,4 +1,4 @@
-<%= form_tag("/users/#{@user_id}/update", method: :put) do %>
+<%= form_tag(@value_id.present? ? "/users/#{@user_id}/update" : "/users/#{@user_id}/create", method: @value_id.present? ? :put : :post) do %>
   <table>
     <tr>
       <td> User </td>
@@ -9,10 +9,11 @@
       <%= hidden_field_tag 'metric_id', @metric_id %>
       <%= hidden_field_tag 'value_id', @value_id %>
       <td> <%= "#{@user.first_name} #{@user.last_name}" %> </td>
-      <td> <%= number_field_tag 'metric_value', @metric_value.value.to_i  %>  </td>
-      <td> <%= submit_tag 'Update' %>  </td>
+      <td> <%= number_field_tag 'metric_value', @value_id.present? ? @metric_value.value.to_i : 0  %>  </td>
+      <td> <%= submit_tag @value_id.present? ? 'Update' : 'Create' %>  </td>
     </tr>
   </table>
 <% end -%>
+
 </br>
-<span> <%= link_to "Back to Metric User List", :back %> </span>
+<span> <%= link_to "Back to Metric User List", "/metrics/#{@metric_id}" %> </span>

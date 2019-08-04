@@ -19,4 +19,13 @@ class UsersController < ApplicationController
     @hoopla_client.put("#{HooplaClient::PUBLIC_API_ENDPOINT}/metrics/#{@metric_id}/values/#{@value_id}", {"href": "#{HooplaClient::PUBLIC_API_ENDPOINT}/metrics/#{@metric_id}/values/#{@value_id}", "metric": {"href": "#{HooplaClient::PUBLIC_API_ENDPOINT}/metrics/#{@metric_id}"}, "owner": {"kind": "user", "href": "#{HooplaClient::PUBLIC_API_ENDPOINT}/users/#{@user_id}"}, "value": @metric_value.to_i, "updated_at": @metric.updated_at})
     redirect_to "/metrics/#{@metric_id}"
   end
+
+  def create
+    @user_id = params[:user_id].present? ? params[:user_id] :  nil
+    @metric_id = params[:metric_id].present? ? params[:metric_id] :  nil
+    @metric_value = params[:metric_value].present? ? params[:metric_value] :  nil
+
+    @hoopla_client.post("#{HooplaClient::PUBLIC_API_ENDPOINT}/metrics/#{@metric_id}/values", {"owner": {"kind": "user", "href": "#{HooplaClient::PUBLIC_API_ENDPOINT}/users/#{@user_id}"}, "value": @metric_value.to_i})
+    redirect_to "/metrics/#{@metric_id}"
+  end
 end
