@@ -4,7 +4,7 @@
   </tr>
     <% @metrics.each do |metric| %>
     <tr>
-      <td> <%= metric.name %> </td>
+      <td> <%= link_to metric.name, "/metrics/#{metric.href.split('metrics/')[1]}" %> </td>
     </tr>
     <% end -%>
 </table>
