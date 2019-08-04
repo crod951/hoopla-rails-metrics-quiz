@@ -19,7 +19,7 @@ class HooplaClient
     if response.status == 200
       JSON.parse(response.body)
     else
-      raise StandardError('Invalid response from ')
+      raise StandardError('Invalid response from GET')
     end
   end
 
