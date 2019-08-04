@@ -1,5 +1,12 @@
 # hoopla-rails-metrics-quiz
 
+## GETTING STARTED
+
+Please follow these steps to run the application:
+1. After cloning this repo, `cd` into the directory and run: `bundle install`
+2. Then run: `rails server`
+3. In your broswer, navigate to `localhost:3000` and you should see a list of metrics
+
 ## REQUIREMENTS
 
 Your goal is to create a Ruby on Rails application that interacts with the Hoopla API in order todisplay a
